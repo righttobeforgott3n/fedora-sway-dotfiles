@@ -1,0 +1,163 @@
+@define-color base   #303446;
+@define-color mantle #292C3C;
+@define-color crust  #232634;
+
+@define-color text     #C6D0F5;
+@define-color subtext0 #A5ADCE;
+@define-color subtext1 #B5BFE2;
+
+@define-color surface0 #414559;
+@define-color surface1 #51576D;
+@define-color surface2 #626880;
+
+@define-color overlay0 #737994;
+@define-color overlay1 #838BA7;
+@define-color overlay2 #949CBB;
+
+@define-color blue      #8CAAEE;
+@define-color lavender  #BABBF1;
+@define-color sapphire  #85C1DC;
+@define-color sky       #99D1DB;
+@define-color teal      #81C8BE;
+@define-color green     #A6D189;
+@define-color yellow    #E5C890;
+@define-color peach     #EF9F76;
+@define-color maroon    #EA999C;
+@define-color red       #E78284;
+@define-color mauve     #CA9EE6;
+@define-color pink      #F4B8E4;
+@define-color flamingo  #EEBEBE;
+@define-color rosewater #F2D5CF;
+
+* {
+    font-family: "JetBrainsMono Nerd Font", Roboto, Helvetica, Arial, sans-serif;
+    font-size: 13px;
+    font-weight: bold;
+}
+
+window#waybar {
+    background-color: rgba(48, 52, 70, 0); /* Base with 0 opacity for floating look */
+    border-bottom: 0px solid rgba(100, 114, 125, 0.5);
+    color: @text;
+    transition-property: background-color;
+    transition-duration: .5s;
+}
+
+window#waybar.hidden {
+    opacity: 0.2;
+}
+
+/* 
+ * Workspaces 
+ */
+
+#workspaces {
+    background: @mantle;
+    margin: 5px;
+    padding: 0px 5px;
+    border-radius: 16px;
+    border: 0px;
+    font-weight: bold;
+    font-style: normal;
+    opacity: 0.8;
+}
+
+#workspaces button {
+    padding: 0px 5px;
+    margin: 4px 3px;
+    border-radius: 16px;
+    border: 0px;
+    color: @subtext0;
+    background-color: transparent;
+    transition: all 0.3s ease-in-out;
+    opacity: 0.4;
+}
+
+#workspaces button.active {
+    color: @base;
+    background: @mauve;
+    border-radius: 16px;
+    min-width: 50px;
+    transition: all 0.3s ease-in-out;
+    opacity: 1.0;
+}
+
+#workspaces button:hover {
+    background: @surface0;
+    color: @text;
+    opacity: 0.7;
+}
+
+/* 
+ * Center Modules (Clock) 
+ */
+
+#clock {
+    background: @mantle;
+    color: @text;
+    margin: 5px;
+    padding: 0px 10px;
+    border-radius: 16px;
+    border: 0px;
+    opacity: 0.8;
+}
+
+/* 
+ * Right Modules (Tray, Network, etc) 
+ */
+
+.modules-right {
+    background: @mantle;
+    margin: 5px;
+    padding: 0px 5px;
+    border-radius: 16px;
+    border: 0px;
+    opacity: 0.8;
+}
+
+#tray, 
+#network, 
+#bluetooth, 
+#pulseaudio, 
+#battery {
+    background-color: transparent;
+    padding: 0px 10px;
+    margin: 5px 0px;
+    color: @text;
+}
+
+#tray {
+    padding-right: 10px;
+}
+
+/* 
+ * Module Specific Colors for "Elegant" accents 
+ */
+
+#network {
+    color: @blue;
+}
+
+#bluetooth {
+    color: @sapphire;
+}
+
+#pulseaudio {
+    color: @teal;
+}
+
+#battery {
+    color: @green;
+}
+
+#battery.charging {
+    color: @sky;
+}
+
+#battery.warning {
+    color: @peach;
+}
+
+#battery.critical {
+    color: @red;
+}

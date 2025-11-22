@@ -13,19 +13,18 @@ set $left h
 set $down j
 set $up k
 set $right l
-# Your preferred terminal emulator
-# Recommends: foot
+
+set $notification_daemon fnott
 set $term foot
-# Your preferred application launcher
-# Note: pass the final command to swaymsg so that the resulting window can be opened
-# on the original workspace that the command was run on.
-# Recommends: rofi-wayland
 set $rofi_cmd rofi \
         -terminal '$term'
-# Shows a combined list of the applications with desktop files and
-# executables from PATH.
-# TODO: add window with the next release of rofi-wayland
 set $menu $rofi_cmd -show combi -combi-modes drun#run -modes combi
+
+# Start fnott notification daemon at startup
+exec $notification_daemon
+
+# Start ProtonVPN at startup
+exec protonvpn-app
 
 ### Output configuration
 #

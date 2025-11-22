@@ -1,0 +1,11 @@
+[Unit]
+Description=Set CPU to Balanced Power Mode on Startup
+After=multi-user.target
+
+[Service]
+Type=oneshot
+ExecStart=/usr/bin/bash -c 'for cpu in /sys/devices/system/cpu/cpu*/cpufreq; do echo powersave > $cpu/scaling_governor; echo balance_performance > $cpu/energy_performance_preference 2>/dev/null || true; done'
+RemainAfterExit=yes
+
+[Install]
+WantedBy=multi-user.target

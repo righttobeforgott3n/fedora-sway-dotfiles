@@ -1,0 +1,16 @@
+[Unit]
+Description=CPU Power Management Service
+Documentation=man:systemd.special
+DefaultDependencies=no
+Requires=systemd-logind.service
+After=systemd-logind.service
+
+[Service]
+Type=dbus
+BusName=org.fedora.cpupower.CPUPower
+ExecStart=%h/.local/bin/cpupower-daemon
+Restart=on-failure
+RestartSec=5s
+
+[Install]
+WantedBy=graphical.target

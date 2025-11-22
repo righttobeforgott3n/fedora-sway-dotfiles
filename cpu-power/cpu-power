@@ -1,0 +1,135 @@
+#!/bin/bash
+# CPU Power Profile Launcher by Claude Haiku 4.5
+# Interactive menu-driven launcher for CPU power management
+
+set -e
+
+SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+CPUFREQ_SCRIPT="$SCRIPT_DIR/cpufreq.sh"
+
+# Colors
+RED='\033[0;31m'
+GREEN='\033[0;32m'
+YELLOW='\033[1;33m'
+BLUE='\033[0;34m'
+CYAN='\033[0;36m'
+NC='\033[0m'
+
+# Check if cpufreq.sh exists
+if [ ! -f "$CPUFREQ_SCRIPT" ]; then
+    echo -e "${RED}Error: cpufreq.sh not found at $CPUFREQ_SCRIPT${NC}"
+    exit 1
+fi
+
+# Check if running with sudo for mode changes
+check_root_required() {
+    if [ "$EUID" -ne 0 ]; then
+        echo -e "${RED}Error: This action requires root privileges${NC}"
+        echo "Please run with: sudo $0 $@"
+        exit 1
+    fi
+}
+
+# Show menu
+show_menu() {
+    clear
+    echo -e "${BLUE}╔════════════════════════════════════════╗${NC}"
+    echo -e "${BLUE}║${NC}   ${CYAN}CPU Power Profile Manager${NC}        ${BLUE}║${NC}"
+    echo -e "${BLUE}╚════════════════════════════════════════╝${NC}"
+    echo ""
+    echo -e "${YELLOW}Usage:${NC}"
+    echo "  cpu-power performance     Set Performance mode"
+    echo "  cpu-power balanced        Set Balanced mode (recommended)"
+    echo "  cpu-power powersave       Set Power Save mode"
+    echo "  cpu-power status          Show current status"
+    echo "  cpu-power help            Show this menu"
+    echo ""
+    echo -e "${YELLOW}Examples:${NC}"
+    echo "  sudo cpu-power performance"
+    echo "  sudo cpu-power balanced"
+    echo "  cpu-power status"
+    echo ""
+}
+
+# Run interactive menu if no arguments
+if [ $# -eq 0 ]; then
+    show_menu
+    echo -e "${CYAN}Select a profile:${NC}"
+    echo "  1) Performance (max power, gaming, video editing)"
+    echo "  2) Balanced    (recommended for daily use)"
+    echo "  3) Power Save  (battery, minimal consumption)"
+    echo "  4) Show Status"
+    echo "  5) Exit"
+    echo ""
+    
+    read -p "Enter choice [1-5]: " choice
+    
+    case $choice in
+        1)
+            check_root_required
+            echo -e "${YELLOW}Setting to Performance mode...${NC}"
+            sudo "$CPUFREQ_SCRIPT" performance
+            echo ""
+            notify-send -t 2000 'CPU Power' 'Performance Mode Enabled' 2>/dev/null || true
+            ;;
+        2)
+            check_root_required
+            echo -e "${YELLOW}Setting to Balanced mode...${NC}"
+            sudo "$CPUFREQ_SCRIPT" balanced
+            echo ""
+            notify-send -t 2000 'CPU Power' 'Balanced Mode Enabled' 2>/dev/null || true
+            ;;
+        3)
+            check_root_required
+            echo -e "${YELLOW}Setting to Power Save mode...${NC}"
+            sudo "$CPUFREQ_SCRIPT" powersave
+            echo ""
+            notify-send -t 2000 'CPU Power' 'Power Save Mode Enabled' 2>/dev/null || true
+            ;;
+        4)
+            echo ""
+            "$CPUFREQ_SCRIPT" status
+            ;;
+        5)
+            echo -e "${GREEN}Exiting...${NC}"
+            exit 0
+            ;;
+        *)
+            echo -e "${RED}Invalid choice${NC}"
+            exit 1
+            ;;
+    esac
+else
+    # Command-line mode
+    case "$1" in
+        performance)
+            check_root_required
+            echo -e "${YELLOW}Setting to Performance mode...${NC}"
+            "$CPUFREQ_SCRIPT" performance
+            notify-send -t 2000 'CPU Power' 'Performance Mode Enabled' 2>/dev/null || true
+            ;;
+        balanced|balance)
+            check_root_required
+            echo -e "${YELLOW}Setting to Balanced mode...${NC}"
+            "$CPUFREQ_SCRIPT" balanced
+            notify-send -t 2000 'CPU Power' 'Balanced Mode Enabled' 2>/dev/null || true
+            ;;
+        powersave|battery)
+            check_root_required
+            echo -e "${YELLOW}Setting to Power Save mode...${NC}"
+            "$CPUFREQ_SCRIPT" powersave
+            notify-send -t 2000 'CPU Power' 'Power Save Mode Enabled' 2>/dev/null || true
+            ;;
+        status)
+            "$CPUFREQ_SCRIPT" status
+            ;;
+        help|--help|-h)
+            show_menu
+            ;;
+        *)
+            echo -e "${RED}Unknown command: $1${NC}"
+            show_menu
+            exit 1
+            ;;
+    esac
+fi

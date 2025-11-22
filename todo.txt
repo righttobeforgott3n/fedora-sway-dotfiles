@@ -1,4 +1,4 @@
-- [] battery consumption and power management.
+- [x] battery consumption and power management.
 - [x] modify the waybar style to appear as a unique block and not three separated tab.
 - [x] use FiraCode as font.
 - [x] customize swaylock with a Catppuccin Frappe based and minimalistic style.

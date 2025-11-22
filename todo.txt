@@ -1,6 +1,7 @@
 - [] battery consumption and power management.
 - [] modify the waybar style to appear as a unique block and not three separated tab.
-- [] use FiraCode as font.
-- [] customize waylock with a Catppuccin Frappe based style.
+- [x] use FiraCode as font.
+- [x] customize swaylock with a Catppuccin Frappe based and minimalistic style.
 - [] modify the waybar order components (to decide about the composition) and put on the left corner the active application settings (as MacOS).
-- [] start fnott (under variable notification_daemon) and ProtonVPN app at startup 
+- [x] start fnott (under variable notification_daemon) and ProtonVPN app at startup.
+- [] install a screenshotter app.

@@ -36,15 +36,31 @@
 }
 
 window#waybar {
-    background-color: rgba(48, 52, 70, 0); /* Base with 0 opacity for floating look */
+    background: @mantle;
     border-bottom: 0px solid rgba(100, 114, 125, 0.5);
     color: @text;
     transition-property: background-color;
     transition-duration: .5s;
+    margin: 5px;
+    padding: 0px 10px;
+    border-radius: 16px;
+    opacity: 0.9;
 }
 
 window#waybar.hidden {
     opacity: 0.2;
+}
+
+#window {
+    background: transparent;
+    color: @lavender;
+    padding: 0px 15px;
+    margin: 0px 10px 0px 0px;
+    font-weight: 600;
+    font-size: 12px;
+    border-right: 1px solid @surface1;
+    min-width: 100px;
+    opacity: 0.9;
 }
 
 /* 
@@ -52,14 +68,14 @@ window#waybar.hidden {
  */
 
 #workspaces {
-    background: @mantle;
-    margin: 5px;
+    background: transparent;
+    margin: 0px;
     padding: 0px 5px;
-    border-radius: 16px;
+    border-radius: 0px;
     border: 0px;
     font-weight: bold;
     font-style: normal;
-    opacity: 0.8;
+    opacity: 1.0;
 }
 
 #workspaces button {
@@ -93,13 +109,14 @@ window#waybar.hidden {
  */
 
 #clock {
-    background: @mantle;
+    background: transparent;
     color: @text;
-    margin: 5px;
-    padding: 0px 10px;
-    border-radius: 16px;
+    margin: 0px;
+    padding: 0px 15px;
+    border-radius: 0px;
     border: 0px;
-    opacity: 0.8;
+    opacity: 1.0;
+    font-weight: 600;
 }
 
 /* 
@@ -107,12 +124,12 @@ window#waybar.hidden {
  */
 
 .modules-right {
-    background: @mantle;
-    margin: 5px;
+    background: transparent;
+    margin: 0px;
     padding: 0px 5px;
-    border-radius: 16px;
+    border-radius: 0px;
     border: 0px;
-    opacity: 0.8;
+    opacity: 1.0;
 }
 
 #tray, 
@@ -121,13 +138,19 @@ window#waybar.hidden {
 #pulseaudio, 
 #battery {
     background-color: transparent;
-    padding: 0px 10px;
-    margin: 5px 0px;
+    padding: 0px 8px;
+    margin: 0px;
     color: @text;
+    border-right: 1px solid @surface1;
 }
 
 #tray {
-    padding-right: 10px;
+    padding-right: 8px;
+    border-right: 0px;
+}
+
+#tray > * {
+    padding: 0px 5px;
 }
 
 /* 

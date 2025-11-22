@@ -7,21 +7,24 @@
     "gtk-layer-shell": true,
     "height": 0,
     "modules-left": [
+        "sway/window",
         "sway/workspaces"
     ],
     "modules-center": [
         "clock"
     ],
     "modules-right": [
-        "tray",
         "network",
         "bluetooth",
         "pulseaudio",
-        "battery"
+        "battery",
+        "tray"
     ],
 
     "sway/window": {
-        "format": "{}"
+        "format": " {}",
+        "max-length": 50,
+        "tooltip": false
     },
     "sway/workspaces": {
         "disable-scroll": true,

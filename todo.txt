@@ -4,5 +4,8 @@
 - [x] customize swaylock with a Catppuccin Frappe based and minimalistic style.
 - [x] modify the waybar order components (to decide about the composition) and put on the left corner the active application settings (as MacOS).
 - [x] start fnott (under variable notification_daemon) and ProtonVPN app at startup.
-- [] install a screenshotter app.
+- [x] install a screenshotter app.
 - [] think to a better main waybar components composition.
+- [] remove the window title on the waybar left side.
+- [] the current workspace must be evident with some effects (coherent with the system aestethic).
+- [x] the install.sh script must backup the current and in use (so the folders under $HOME/.config) configuration before applying the new one in way to recover the system in case of bugs.

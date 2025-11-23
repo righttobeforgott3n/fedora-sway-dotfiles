@@ -63,9 +63,7 @@ window#waybar.hidden {
     opacity: 0.9;
 }
 
-/* 
- * Workspaces 
- */
+/* Workspaces */
 
 #workspaces {
     background: transparent;
@@ -86,16 +84,19 @@ window#waybar.hidden {
     color: @subtext0;
     background-color: transparent;
     transition: all 0.3s ease-in-out;
-    opacity: 0.4;
+    opacity: 0.3;
 }
 
-#workspaces button.active {
-    color: @base;
-    background: @mauve;
+#workspaces button.active,
+#workspaces button.focused {
+    color: @crust;
+    background: @blue;
     border-radius: 16px;
     min-width: 50px;
     transition: all 0.3s ease-in-out;
     opacity: 1.0;
+    font-weight: 700;
+    padding: 0px 10px;
 }
 
 #workspaces button:hover {
@@ -104,9 +105,7 @@ window#waybar.hidden {
     opacity: 0.7;
 }
 
-/* 
- * Center Modules (Clock) 
- */
+/* Center Modules (Clock) */
 
 #clock {
     background: transparent;
@@ -119,9 +118,7 @@ window#waybar.hidden {
     font-weight: 600;
 }
 
-/* 
- * Right Modules (Tray, Network, etc) 
- */
+/* Right Modules (Tray, Network, etc) */
 
 .modules-right {
     background: transparent;
@@ -153,9 +150,7 @@ window#waybar.hidden {
     padding: 0px 5px;
 }
 
-/* 
- * Module Specific Colors for "Elegant" accents 
- */
+/* Module Specific Colors for "Elegant" accents */
 
 #network {
     color: @blue;

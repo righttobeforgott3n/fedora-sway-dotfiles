@@ -13,7 +13,7 @@ BLUE='\033[0;34m'
 NC='\033[0m' # No Color
 
 # Directories
-REQUIRED_DIRS=("fnott" "foot" "sway" "waybar" "swaylock")
+REQUIRED_DIRS=("fnott" "foot" "sway" "waybar" "swaylock" "rofi")
 SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 STAGING_DIR="${SCRIPT_DIR}/staging"
 CONFIG_DIR="${HOME}/.config"

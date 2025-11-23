@@ -9,3 +9,4 @@
 - [x] remove the window title on the waybar left side.
 - [x] the current workspace must be evident with some effects (coherent with the system aestethic).
 - [x] the install.sh script must backup the current and in use (so the folders under $HOME/.config) configuration before applying the new one in way to recover the system in case of bugs.
+- [x] customize the rofi aestethic with a look coherent with the system.

@@ -7,7 +7,6 @@
     "gtk-layer-shell": true,
     "height": 0,
     "modules-left": [
-        "sway/window",
         "sway/workspaces"
     ],
     "modules-center": [
@@ -21,11 +20,6 @@
         "tray"
     ],
 
-    "sway/window": {
-        "format": " {}",
-        "max-length": 50,
-        "tooltip": false
-    },
     "sway/workspaces": {
         "disable-scroll": true,
         "all-outputs": true,

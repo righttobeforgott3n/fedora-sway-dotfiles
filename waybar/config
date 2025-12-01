@@ -1,74 +1,69 @@
 {
     "layer": "top",
     "position": "top",
-    "mod": "dock",
-    "exclusive": true,
-    "passthrough": false,
-    "gtk-layer-shell": true,
-    "height": 0,
+    "height": 32,
+    "spacing": 4,
     "modules-left": [
+        "custom/launcher",
         "sway/workspaces"
     ],
     "modules-center": [
         "clock"
     ],
     "modules-right": [
-        "network",
-        "bluetooth",
-        "pulseaudio",
+        "group/hardware",
         "battery",
         "tray"
     ],
-
+    "custom/launcher": {
+        "format": "",
+        "on-click": "rofi -show drun",
+        "tooltip": false
+    },
     "sway/workspaces": {
         "disable-scroll": true,
         "all-outputs": true,
-        "on-click": "activate",
         "format": "{icon}",
         "format-icons": {
             "1": "1",
             "2": "2",
             "3": "3",
-            "4": "4"
-        },
-        "persistent_workspaces": {
-            "1": [],
-            "2": [],
-            "3": [],
-            "4": []
+            "4": "4",
+            "default": ""
         }
     },
-    "tray": {
-        "icon-size": 13,
-        "spacing": 10
+    "group/hardware": {
+        "orientation": "horizontal",
+        "modules": [
+            "network",
+            "bluetooth",
+            "pulseaudio"
+        ]
     },
     "clock": {
-        "format": "{:%R  |  %e %B}",
+        "format": "{:%a %d %b  %H:%M}",
         "tooltip-format": "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>"
     },
     "network": {
-        "format-wifi": "{icon}",
-        "format-ethernet": " ",
-        "format-linked": "{ifname} (No IP) ",
-        "format-disconnected": "!",
-        "tooltip-format-wifi": "{essid} ({signalStrength}%) ",
-        "format-icons": ["󰤯", "󰤟", "󰤢", "󰤥", "󰤨"]
+        "format-wifi": "",
+        "format-ethernet": "",
+        "format-disconnected": "󰤭",
+        "tooltip-format": "{essid} ({signalStrength}%)"
     },
     "bluetooth": {
-	    "format": "",
-	    "format-disabled": "",
-	    "format-connected": " {num_connections}",
-	    "tooltip-format": "{controller_alias}\t{controller_address}",
-	    "tooltip-format-connected": "{controller_alias}\t{controller_address}\n\n{device_enumerate}",
-	    "tooltip-format-enumerate-connected": "{device_alias}\t{device_address}"
+        "format": "",
+        "format-connected": "",
+        "tooltip-format": "{controller_alias}\t{controller_address}",
+        "on-click": "blueman-manager"
     },
     "pulseaudio": {
-        "format": "{icon} {volume}%",
+        "format": "{icon}",
         "format-muted": "󰝟",
         "format-icons": {
             "default": ["󰕿", "󰖀", "󰕾"]
         },
-        "on-click": "pavucontrol"
+        "on-click": "pavucontrol",
+        "tooltip-format": "Volume: {volume}%"
     },
     "battery": {
         "states": {
@@ -76,9 +71,12 @@
             "warning": 30,
             "critical": 15
         },
-        "format": "{icon} {capacity}%",
-        "format-charging": " {capacity}%",
-        "format-plugged": " {capacity}%",
+        "format": "{icon}  {capacity}%",
+        "format-charging": "  {capacity}%",
         "format-icons": ["", "", "", "", ""]
+    },
+    "tray": {
+        "icon-size": 14,
+        "spacing": 10
     }
 }

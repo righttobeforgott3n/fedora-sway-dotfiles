@@ -1,43 +1,33 @@
-# Swaylock configuration with Catppuccin Frappe theme
-# Colors from Catppuccin Frappe palette
+# Swaylock macOS Tahoe Config
+
 image=$HOME/.config/swaylock/black-solid.jpg
 scaling=fill
 
-# Catppuccin Frappe Colors
-# Base: #303446
-# Text: #C6D0F5
-# Red: #E78284
-# Green: #A6D189
-# Blue: #8CAAEE
-# Mantle: #292C3C
+# Colors
+# Ring: System Gray 4 (#3a3a3c)
+ring-color=3a3a3cff
+# Key Highlight: Apple Blue (#0a84ff)
+key-hl-color=0a84ffff
+# Backspace Highlight: Apple Red (#ff453a)
+bs-hl-color=ff453aff
 
-# Main interface colors
-bs-hl-color=CA9EE6ff      # Mauve for key highlight
-key-hl-color=81C8BEff    # Teal for key
-line-color=292C3Cff      # Mantle for line
+# Inside: Base Gray (#1e1e1e)
+inside-color=1e1e1eff
+inside-clear-color=1e1e1eff
+inside-wrong-color=1e1e1eff
+inside-ring-color=1e1e1eff
+
+# Text: White (#ffffff)
+text-color=ffffffff
+text-clear-color=ffffffff
+text-wrong-color=ff453aff
+text-ring-color=ffffffff
+
 line-uses-ring=false
-ring-color=51576Dff      # Surface1
-ring-width=8
-inside-color=303446ff    # Base
-inside-clear-color=A6D189ff # Green
-inside-wrong-color=E78284ff # Red
-inside-ring-color=51576Dff  # Surface1
+line-color=1e1e1eff
 
-# Text colors
-text-color=C6D0F5ff      # Text
-text-clear-color=303446ff # Base (dark on green)
-text-wrong-color=303446ff # Base (dark on red)
-text-ring-color=C6D0F5ff  # Text
-
-# Positioning
+# Layout
 indicator-radius=100
-indicator-thickness=10
-
-# Font settings
+indicator-thickness=8
 font="FiraCode Nerd Font"
 font-size=24
-
-# Behavior
-hide-keyboard-layout
-show-failed-attempts
-fade-in=300

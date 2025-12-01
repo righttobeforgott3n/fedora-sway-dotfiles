@@ -1,179 +1,100 @@
-@define-color base   #303446;
-@define-color mantle #292C3C;
-@define-color crust  #232634;
+/* ~/.config/waybar/style.css */
 
-@define-color text     #C6D0F5;
-@define-color subtext0 #A5ADCE;
-@define-color subtext1 #B5BFE2;
-
-@define-color surface0 #414559;
-@define-color surface1 #51576D;
-@define-color surface2 #626880;
-
-@define-color overlay0 #737994;
-@define-color overlay1 #838BA7;
-@define-color overlay2 #949CBB;
-
-@define-color blue      #8CAAEE;
-@define-color lavender  #BABBF1;
-@define-color sapphire  #85C1DC;
-@define-color sky       #99D1DB;
-@define-color teal      #81C8BE;
-@define-color green     #A6D189;
-@define-color yellow    #E5C890;
-@define-color peach     #EF9F76;
-@define-color maroon    #EA999C;
-@define-color red       #E78284;
-@define-color mauve     #CA9EE6;
-@define-color pink      #F4B8E4;
-@define-color flamingo  #EEBEBE;
-@define-color rosewater #F2D5CF;
+/* macOS Tahoe Palette Definitions */
+@define-color base   #1e1e1e;  /* Window Background */
+@define-color mantle #2c2c2e;  /* Panel Background */
+@define-color text   #ffffff;  /* White */
+@define-color blue   #0a84ff;  /* Apple Blue */
+@define-color green  #32d74b;  /* Apple Green */
+@define-color red    #ff453a;  /* Apple Red */
+@define-color border #3a3a3c;  /* Separator/Border */
 
 * {
-    font-family: "FiraCode Nerd Font", Roboto, Helvetica, Arial, sans-serif;
+    font-family: "FiraCode Nerd Font";
     font-size: 13px;
-    font-weight: bold;
+    min-height: 0;
 }
 
 window#waybar {
-    background: @mantle;
-    border-bottom: 0px solid rgba(100, 114, 125, 0.5);
+    background-color: @base;
     color: @text;
-    transition-property: background-color;
-    transition-duration: .5s;
-    margin: 5px;
-    padding: 0px 10px;
-    border-radius: 16px;
-    opacity: 0.9;
+    border-bottom: 1px solid @border;
 }
 
-window#waybar.hidden {
-    opacity: 0.2;
+/* Left: Fedora Icon */
+#custom-launcher {
+    color: @text;       /* White icon for clean look */
+    font-size: 18px;
+    padding-left: 15px;
+    padding-right: 10px;
+    margin-right: 10px;
 }
-
-#window {
-    background: transparent;
-    color: @lavender;
-    padding: 0px 15px;
-    margin: 0px 10px 0px 0px;
-    font-weight: 600;
-    font-size: 12px;
-    border-right: 1px solid @surface1;
-    min-width: 100px;
-    opacity: 0.9;
-}
-
-/* Workspaces */
 
 #workspaces {
-    background: transparent;
-    margin: 0px;
-    padding: 0px 5px;
-    border-radius: 0px;
-    border: 0px;
-    font-weight: bold;
-    font-style: normal;
-    opacity: 1.0;
+    background-color: transparent;
+    margin-top: 4px;
+    margin-bottom: 4px;
 }
 
 #workspaces button {
-    padding: 0px 5px;
-    margin: 4px 3px;
-    border-radius: 16px;
-    border: 0px;
-    color: @subtext0;
+    color: @text;
     background-color: transparent;
-    transition: all 0.3s ease-in-out;
-    opacity: 0.3;
+    border-radius: 4px;
+    padding: 0 10px;
+    margin: 0 2px;
+    transition: all 0.2s ease;
 }
 
-#workspaces button.active,
 #workspaces button.focused {
-    color: @crust;
-    background: @blue;
-    border-radius: 16px;
-    min-width: 50px;
-    transition: all 0.3s ease-in-out;
-    opacity: 1.0;
-    font-weight: 700;
-    padding: 0px 10px;
+    background-color: @mantle; /* Subtle gray highlight */
+    color: @text;
+    border-bottom: 2px solid @text; /* Simple underline indicator */
 }
 
 #workspaces button:hover {
-    background: @surface0;
+    background-color: @mantle;
+}
+
+/* Right: Control Center Pill */
+#network, #bluetooth, #pulseaudio {
+    background-color: @mantle;
     color: @text;
-    opacity: 0.7;
+    padding: 4px 12px;
+    margin: 4px 0;
 }
-
-/* Center Modules (Clock) */
-
-#clock {
-    background: transparent;
-    color: @text;
-    margin: 0px;
-    padding: 0px 15px;
-    border-radius: 0px;
-    border: 0px;
-    opacity: 1.0;
-    font-weight: 600;
-}
-
-/* Right Modules (Tray, Network, etc) */
-
-.modules-right {
-    background: transparent;
-    margin: 0px;
-    padding: 0px 5px;
-    border-radius: 0px;
-    border: 0px;
-    opacity: 1.0;
-}
-
-#tray, 
-#network, 
-#bluetooth, 
-#pulseaudio, 
-#battery {
-    background-color: transparent;
-    padding: 0px 8px;
-    margin: 0px;
-    color: @text;
-    border-right: 1px solid @surface1;
-}
-
-#tray {
-    padding-right: 8px;
-    border-right: 0px;
-}
-
-#tray > * {
-    padding: 0px 5px;
-}
-
-/* Module Specific Colors for "Elegant" accents */
 
 #network {
-    color: @blue;
+    border-radius: 8px 0 0 8px;
+    padding-left: 16px;
 }
 
 #bluetooth {
-    color: @sapphire;
+    border-radius: 0;
+    border-left: 1px solid @border;
+    border-right: 1px solid @border;
 }
 
 #pulseaudio {
-    color: @teal;
+    border-radius: 0 8px 8px 0;
+    padding-right: 16px;
+    margin-right: 10px;
+}
+
+#clock {
+    font-weight: 600;
+    color: @text;
 }
 
 #battery {
-    color: @green;
+    background-color: @mantle;
+    color: @text;
+    padding: 4px 12px;
+    border-radius: 8px;
+    margin: 4px 10px 4px 0;
 }
 
 #battery.charging {
-    color: @sky;
-}
-
-#battery.warning {
-    color: @peach;
+    color: @green;
 }
 
 #battery.critical {

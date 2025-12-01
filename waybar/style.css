@@ -1,13 +1,11 @@
-/* ~/.config/waybar/style.css */
-
-/* macOS Tahoe Palette Definitions */
-@define-color base   #1e1e1e;  /* Window Background */
-@define-color mantle #2c2c2e;  /* Panel Background */
-@define-color text   #ffffff;  /* White */
+/* macOS Tahoe Dark Palette (Matte/Solid) */
+@define-color base   #1e1e1e;  /* Main Bar Background */
+@define-color mantle #2c2c2e;  /* Control Pill Background */
+@define-color text   #ffffff;  /* White Text */
 @define-color blue   #0a84ff;  /* Apple Blue */
 @define-color green  #32d74b;  /* Apple Green */
 @define-color red    #ff453a;  /* Apple Red */
-@define-color border #3a3a3c;  /* Separator/Border */
+@define-color border #3a3a3c;  /* Separators */
 
 * {
     font-family: "FiraCode Nerd Font";
@@ -23,13 +21,14 @@ window#waybar {
 
 /* Left: Fedora Icon */
 #custom-launcher {
-    color: @text;       /* White icon for clean look */
+    color: @text;
     font-size: 18px;
     padding-left: 15px;
     padding-right: 10px;
     margin-right: 10px;
 }
 
+/* Workspaces */
 #workspaces {
     background-color: transparent;
     margin-top: 4px;
@@ -46,16 +45,22 @@ window#waybar {
 }
 
 #workspaces button.focused {
-    background-color: @mantle; /* Subtle gray highlight */
+    background-color: @mantle;
     color: @text;
-    border-bottom: 2px solid @text; /* Simple underline indicator */
+    border-bottom: 2px solid @text;
 }
 
 #workspaces button:hover {
     background-color: @mantle;
 }
 
-/* Right: Control Center Pill */
+/* Right: Tray (Opened Apps) */
+#tray {
+    background-color: transparent;
+    margin-right: 15px; /* Space between Tray and System Icons */
+}
+
+/* Right: Hardware Control Pill */
 #network, #bluetooth, #pulseaudio {
     background-color: @mantle;
     color: @text;
@@ -64,7 +69,7 @@ window#waybar {
 }
 
 #network {
-    border-radius: 8px 0 0 8px;
+    border-radius: 6px 0 0 6px;
     padding-left: 16px;
 }
 
@@ -72,24 +77,33 @@ window#waybar {
     border-radius: 0;
     border-left: 1px solid @border;
     border-right: 1px solid @border;
+    /* Ensure transition works for color change */
+    transition: all 0.3s ease;
+}
+
+/* When Bluetooth is actively OFF or Disabled */
+#bluetooth.off, #bluetooth.disabled {
+    background-color: @mantle;
+    color: @surface1; /* Dimmed gray color */
+}
+
+/* When Connected */
+#bluetooth.connected {
+    color: @blue; /* Highlight blue when device connected */
 }
 
 #pulseaudio {
-    border-radius: 0 8px 8px 0;
+    border-radius: 0 6px 6px 0;
     padding-right: 16px;
     margin-right: 10px;
 }
 
-#clock {
-    font-weight: 600;
-    color: @text;
-}
-
+/* Right: Battery */
 #battery {
     background-color: @mantle;
     color: @text;
     padding: 4px 12px;
-    border-radius: 8px;
+    border-radius: 6px;
     margin: 4px 10px 4px 0;
 }
 
@@ -99,4 +113,20 @@ window#waybar {
 
 #battery.critical {
     color: @red;
+    animation-name: blink;
+    animation-duration: 0.5s;
+    animation-timing-function: linear;
+    animation-iteration-count: infinite;
+    animation-direction: alternate;
+}
+
+#clock {
+    font-weight: 600;
+    color: @text;
+}
+
+@keyframes blink {
+    to {
+        color: @text;
+    }
 }

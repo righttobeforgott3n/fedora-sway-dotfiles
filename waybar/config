@@ -11,13 +11,13 @@
         "clock"
     ],
     "modules-right": [
+        "tray",
         "group/hardware",
-        "battery",
-        "tray"
+        "battery"
     ],
     "custom/launcher": {
         "format": "",
-        "on-click": "rofi -show drun",
+        "on-click": "rofi -show combi -combi-modes drun#run -modes combi",
         "tooltip": false
     },
     "sway/workspaces": {
@@ -52,8 +52,12 @@
     },
     "bluetooth": {
         "format": "",
+        "format-disabled": "󰂲", // Strikethrough icon when off
+        "format-off": "󰂲",      // Explicit off state
         "format-connected": "",
         "tooltip-format": "{controller_alias}\t{controller_address}",
+        "tooltip-format-connected": "{controller_alias}\t{controller_address}\n\n{device_enumerate}",
+        "tooltip-format-enumerate-connected": "{device_alias}\t{device_address}",
         "on-click": "blueman-manager"
     },
     "pulseaudio": {

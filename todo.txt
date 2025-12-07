@@ -13,3 +13,5 @@
 - [] bug: every time a worksapce tab is clicked the mouse is positionated to the new workspace centre.
 - [] bug: the following icons are broken: the Fedora icon on the waybar left corner, the disabled bluetooth one, the volume, the connection icon.
 - [] enh: improve rofi menu to launch command as I was executing them from the shell (is it even possible?).
+- [x] enh: incude the gtk installed them within the installer script.
+- [] enh: add zsh and plugins.

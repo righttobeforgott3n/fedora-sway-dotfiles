@@ -75,8 +75,6 @@ window#waybar {
 
 #bluetooth {
     border-radius: 0;
-    border-left: 1px solid @border;
-    border-right: 1px solid @border;
     /* Ensure transition works for color change */
     transition: all 0.3s ease;
 }

@@ -20,10 +20,6 @@ set $rofi_cmd rofi \
         -terminal '$term'
 set $menu $rofi_cmd -show combi -combi-modes drun#run -modes combi
 
-exec_always gsettings set org.gnome.desktop.interface gtk-theme "WhiteSur-Dark-Solid"
-exec_always gsettings set org.gnome.desktop.interface color-scheme "prefer-dark"
-exec_always gsettings set org.gnome.desktop.interface icon-theme "WhiteSur"
-
 # Start fnott notification daemon at startup
 exec $notification_daemon
 
@@ -206,22 +202,6 @@ mode "resize" {
     bindsym Escape mode "default"
 }
 bindsym $mod+r mode "resize"
-
-# 3-Finger Swipe to switch workspaces
-bindgesture swipe:3:right workspace prev
-bindgesture swipe:3:left workspace next
-
-# Optional: 4-Finger Swipe for layouts or scratching
-bindgesture swipe:4:up floating toggle
-bindgesture swipe:4:down move scratchpad
-
-input type:touchpad {
-    dwt enabled                 # Disable while typing
-    tap enabled                 # Tap to click (1 finger)
-    natural_scroll enabled      # Invert scroll direction (Mac style)
-    accel_profile adaptive      # Mouse acceleration
-    pointer_accel 0.3           # Speed (-1 to 1)
-}
 
 # Include configs from 3 locations:
 #  - /usr/share/sway/config.d

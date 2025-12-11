@@ -81,6 +81,8 @@
     },
     "tray": {
         "icon-size": 14,
-        "spacing": 10
+        "spacing": 10,
+        "show-passive-items": false,
+        "icon-theme": "Papirus-Dark"
     }
 }

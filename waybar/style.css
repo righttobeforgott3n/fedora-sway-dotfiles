@@ -121,6 +121,7 @@ window#waybar {
 #clock {
     font-weight: 600;
     color: @text;
+    margin-right: 15px;
 }
 
 @keyframes blink {

@@ -7,13 +7,12 @@
         "custom/launcher",
         "sway/workspaces"
     ],
-    "modules-center": [
-        "clock"
-    ],
+    "modules-center": [],
     "modules-right": [
         "tray",
         "group/hardware",
-        "battery"
+        "battery",
+        "clock"
     ],
     "custom/launcher": {
         "format": "",

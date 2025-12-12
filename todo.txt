@@ -14,5 +14,5 @@
 - [x] bug: the following icons are broken: the connection icon.
 - [] enh: improve rofi menu to launch command as I was executing them from the shell (is it even possible?).
 - [x] enh: incude the gtk installed them within the installer script.
-- [] enh: add zsh and plugins.
+- [x] enh: add zsh and plugins.
 - [x] enh: sync. the fonts import and installation within the installer script.

@@ -18,6 +18,8 @@ SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 STAGING_DIR="${SCRIPT_DIR}/staging"
 CONFIG_DIR="${HOME}/.config"
 BACKUP_DIR="${HOME}/.config.backup"
+FONTS_DIR="${HOME}/.local/share/fonts"
+FONTS_SOURCE="${SCRIPT_DIR}/fonts"
 
 # Functions
 print_header() {
@@ -99,6 +101,39 @@ restore_from_backup() {
     echo ""
 }
 
+install_fonts() {
+    echo -e "${YELLOW}Installing fonts...${NC}"
+    
+    # Check if fonts source directory exists
+    if [ ! -d "$FONTS_SOURCE" ]; then
+        echo -e "${YELLOW}⚠ Fonts directory not found (skipping)${NC}"
+        echo ""
+        return 0
+    fi
+    
+    # Create fonts directory if it doesn't exist
+    mkdir -p "$FONTS_DIR"
+    
+    # Count font files
+    local font_count=$(find "$FONTS_SOURCE" -type f \( -name "*.ttf" -o -name "*.otf" \) | wc -l)
+    
+    if [ "$font_count" -eq 0 ]; then
+        echo -e "${YELLOW}⚠ No font files found in fonts directory${NC}"
+        echo ""
+        return 0
+    fi
+    
+    # Copy font files
+    find "$FONTS_SOURCE" -type f \( -name "*.ttf" -o -name "*.otf" \) -exec cp {} "$FONTS_DIR/" \;
+    
+    # Update font cache
+    echo "  Updating font cache..."
+    fc-cache -f "$FONTS_DIR" 2>/dev/null || true
+    
+    echo -e "${GREEN}✓ Installed $font_count font files${NC}"
+    echo ""
+}
+
 # Main installation
 main() {
     print_header
@@ -121,6 +156,9 @@ main() {
     
     # Backup existing configuration
     backup_current_config
+    
+    # Install fonts
+    install_fonts
     
     # Install new configuration from staging
     echo -e "${YELLOW}Installing configuration files from staging...${NC}"
@@ -145,6 +183,12 @@ main() {
             echo "  ✓ ${dir}"
         fi
     done
+    
+    # Show font installation status
+    local font_count=$(find "$FONTS_DIR" -type f \( -name "*.ttf" -o -name "*.otf" \) 2>/dev/null | wc -l)
+    if [ "$font_count" -gt 0 ]; then
+        echo "  ✓ fonts ($font_count files)"
+    fi
     echo ""
     echo -e "${YELLOW}Backup information:${NC}"
     echo "  Location: ${BACKUP_DIR}"

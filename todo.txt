@@ -16,3 +16,17 @@
 - [x] enh: incude the gtk installed them within the installer script.
 - [x] enh: add zsh and plugins.
 - [x] enh: sync. the fonts import and installation within the installer script.
+- [] enh: add workspace-specific window rules and auto-assignment (e.g., browser on ws1, terminals on ws2, etc.).
+- [] enh: configure system-wide notifications theming for fnott to match the color palette.
+- [] enh: add keyboard shortcuts for common tasks (screenshot regions, color picker, clipboard manager).
+- [] enh: implement window gaps and borders with aesthetic styling.
+- [] enh: add workspace auto-naming based on active applications (dynamic workspace names).
+- [] enh: configure autotiling script/plugin for automatic window layout management.
+- [] enh: add brightness and volume OSD (on-screen display) notifications.
+- [] enh: implement scratchpad terminal (dropdown terminal accessible via hotkey).
+- [] enh: add system resource monitor module to waybar (CPU, RAM, network speed).
+- [] enh: configure keybindings for window snapping (quarter tiling, thirds, etc.).
+- [] enh: add clipboard history manager integration (e.g., clipman).
+- [] enh: implement focus follows mouse with configurable delay.
+- [] enh: add playerctl integration to waybar for media control.
+- [] enh: configure inhibit idle when watching videos or during presentations.

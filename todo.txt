@@ -30,3 +30,4 @@
 - [] enh: implement focus follows mouse with configurable delay.
 - [] enh: add playerctl integration to waybar for media control.
 - [] enh: configure inhibit idle when watching videos or during presentations.
+- [] enh: rotate the battery icon and move the battery percentage within it.

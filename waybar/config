@@ -21,14 +21,16 @@
     },
     "sway/workspaces": {
         "disable-scroll": true,
-        "all-outputs": true,
+        "all-outputs": false,
+        "current-only": true,
         "format": "{icon}",
         "format-icons": {
             "1": "1",
             "2": "2",
             "3": "3",
             "4": "4",
-            "default": ""
+            "5": "5",
+            "default": ""
         }
     },
     "group/hardware": {
